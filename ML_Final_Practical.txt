@@ -1,0 +1,2149 @@
+###Assignment_1
+
+##(a). Usage of methods such as floor(), ceil(), sqrt(), isqrt(), gcd() etc.
+
+import math
+
+## floor()
+print("math.floor(3.7):", math.floor(3.7))
+print("math.floor(-2.3):", math.floor(-2.3))
+
+## ceil()
+print("math.ceil(3.2):", math.ceil(3.2))
+print("math.ceil(-2.7):", math.ceil(-2.7))
+
+## sqrt()
+print("math.sqrt(25):", math.sqrt(25))
+print("math.sqrt(2):", math.sqrt(2))
+
+## isqrt()
+print("math.isqrt(25):", math.isqrt(25))
+print("math.isqrt(26):", math.isqrt(26))
+print("math.isqrt(0):", math.isqrt(0))
+
+## gcd()
+print("math.gcd(48, 18):", math.gcd(48, 18))
+print("math.gcd(17, 5):", math.gcd(17, 5))
+
+## Other math functions
+print("math.pow(2, 3):", math.pow(2, 3))
+print("math.factorial(5):", math.factorial(5))
+print("math.log(10):", math.log(10))
+print("math.sin(math.pi/2):", math.sin(math.pi/2))
+
+
+##(B). Usage of attributes of array such as ndim, shape, size, methods such as sum(),mean(), sort(), sin() etc.
+
+import numpy as np
+
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+
+print("Array:\n", arr)
+print("Dimensions (ndim):", arr.ndim)
+print("Shape:", arr.shape)
+print("Size:", arr.size)
+
+print("Sum of elements:", arr.sum())
+print("Mean of elements:", arr.mean())
+print("Sorted elements:\n", np.sort(arr))
+print("Sine of elements:\n", np.sin(arr))
+
+##(c). Usage of methods such as det(), eig() etc
+
+import numpy as np
+
+matrix = np.array([[2, 2],
+                   [1, 3]])
+
+# Determinant
+det = np.linalg.det(matrix)
+print("Determinant of matrix:", det)
+
+# Eigenvalues and Eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(matrix)
+print("Eigenvalues:", eigenvalues)
+print("Eigenvectors:\n", eigenvectors)
+
+
+##(d). Consider a list datatype(1D) then reshape it into2D, 3D matrix using numpy 
+##To reshape a 1D Python list into 2D and 3D matrices using NumPy, the list must first 
+##be converted into a NumPy array. The reshape() method can then be applied to this 
+##array, specifying the desired dimensions.
+
+import numpy as np
+
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+np_array = np.array(my_list)
+
+print("Original 1D Array:", np_array)
+print("Shape:", np_array.shape)
+
+# 2D reshape (3x4)
+matrix_2d = np_array.reshape(3, 4)
+print("\n2D Matrix:\n", matrix_2d)
+print("Shape:", matrix_2d.shape)
+
+# 3D reshape (2x2x3)
+matrix_3d = np_array.reshape(2, 2, 3)
+print("\n3D Matrix:\n", matrix_3d)
+print("Shape:", matrix_3d.shape)
+
+
+##(e). Numpy.random.Generator and matrices using numpy
+
+import numpy as np
+
+# Random generator
+rng = np.random.default_rng(seed=42)
+
+# Random numbers
+random_floats = rng.random(size=(2, 3))
+print("Random Floats (2x3):\n", random_floats)
+
+random_integers = rng.integers(low=1, high=11, size=(3, 3))
+print("\nRandom Integers (3x3):\n", random_integers)
+
+normal_values = rng.normal(loc=0, scale=1, size=(2, 2))
+print("\nNormal Distribution (2x2):\n", normal_values)
+
+# Matrix operations
+matrix_a = np.array([[1, 2, 3],
+                     [4, 5, 6],
+                     [7, 8, 9]])
+
+matrix_b = np.array([[9, 8, 7],
+                     [6, 5, 4],
+                     [3, 2, 1]])
+
+print("\nMatrix A:\n", matrix_a)
+print("Matrix B:\n", matrix_b)
+
+# Matrix multiplication
+product = np.dot(matrix_a, matrix_b)
+print("\nMatrix Multiplication:\n", product)
+
+# Transpose
+print("\nTranspose of Matrix A:\n", matrix_a.T)
+
+# Element-wise addition
+print("\nElement-wise Sum:\n", matrix_a + matrix_b)
+
+
+##(f). Find the determinant of a matrix using scipy
+
+import numpy as np
+from scipy import linalg
+
+matrix_A = np.array([[3, 1, 4],
+                     [1, 5, 9],
+                     [2, 6, 5]])
+
+determinant_A = linalg.det(matrix_A)
+print("Matrix A:\n", matrix_A)
+print("\nDeterminant of Matrix A:", determinant_A)
+
+
+##(g). Find eigen value and eigen vector of a matrix using scipy
+
+import numpy as np
+from scipy.linalg import eig
+
+A = np.array([[2, 1],
+              [1, 2]])
+
+eigenvalues, eigenvectors = eig(A)
+print("Matrix A:\n", A)
+print("\nEigenvalues:", eigenvalues)
+print("Eigenvectors:\n", eigenvectors)
+
+
+###Assignment_2
+
+##(a). Create a Series using pandas and display
+
+import pandas as pd
+
+# Create a Pandas Series
+data = [10, 20, 30, 40, 50]
+series = pd.Series(data)
+
+print("Pandas Series:")
+print(series)
+
+
+##(b). Access the index and the values of our Series
+
+print("\nSeries Index:")
+print(series.index)
+
+print("\nSeries Values:")
+print(series.values)
+
+
+##(c). Compare an array using Numpy with a series using pandas
+
+import numpy as np
+
+# Create NumPy array
+np_array = np.array([10, 20, 30, 40, 50])
+
+print("\nNumPy Array:")
+print(np_array)
+
+print("\nPandas Series:")
+print(series)
+
+# Perform element-wise comparison
+print("\nArray == Series:")
+print(np_array == series)
+
+
+##(d). Define Series objects with individual indices
+
+students = pd.Series([85, 90, 95, 80], index=["Akash", "Omkar", "Prathmesh", "Sakshi"])
+print("\nStudent Marks Series:")
+print(students)
+
+
+##(e). Access single value using label and position
+
+print("\nMarks of Omkar:", students["Omkar"])
+print("Marks of 2nd student (position index):", students.iloc[1])
+
+
+##(f). Load datasets in a Data frame variable using pandas Usage of different methods in Matplotlib.
+## Create a small DataFrame manually
+
+data = {
+    "Name": ["Akash", "Omkar", "Prathmesh", "Sakshi"],
+    "Age": [22, 23, 21, 22],
+    "Marks": [85, 90, 95, 80]
+}
+
+df = pd.DataFrame(data)
+
+print("\nDataFrame:")
+print(df)
+
+# Display DataFrame info and statistics
+print("\nDataFrame Info:")
+print(df.info())
+
+print("\nStatistical Summary:")
+print(df.describe())
+
+
+##Usage of different methods in Matplotlib.
+
+import matplotlib.pyplot as plt
+
+# Simple line plot
+x = [1, 2, 3, 4, 5]
+y = [10, 20, 25, 30, 35]
+
+plt.figure(figsize=(6,4))
+plt.plot(x, y, color='blue', marker='o', linestyle='--')
+plt.title("Line Plot Example")
+plt.xlabel("X-axis")
+plt.ylabel("Y-axis")
+plt.grid(True)
+plt.show()
+
+# Bar chart
+plt.figure(figsize=(6,4))
+plt.bar(df["Name"], df["Marks"], color='orange')
+plt.title("Student Marks Bar Chart")
+plt.xlabel("Students")
+plt.ylabel("Marks")
+plt.show()
+
+# Pie chart
+plt.figure(figsize=(5,5))
+plt.pie(df["Marks"], labels=df["Name"], autopct='%1.1f%%', startangle=90)
+plt.title("Student Marks Distribution")
+plt.show()
+
+# Histogram
+plt.figure(figsize=(6,4))
+plt.hist(df["Marks"], bins=5, color='green', edgecolor='black')
+plt.title("Histogram of Marks")
+plt.xlabel("Marks")
+plt.ylabel("Frequency")
+plt.show()
+
+
+###Assignment_3
+
+##Data set Creation:
+##i. Creation using pandas
+##Creating datasets using Pandas primarily involves constructing a DataFrame, which 
+##is a two-dimensional, tabular data structure with labeled axes (rows and columns). 
+##There are several common methods to achieve this:
+
+##1. From a Dictionary:
+
+import pandas as pd
+
+data = {'Name': ['Alice', 'Bob', 'Charlie'],
+        'Age': [25, 30, 22],
+        'City': ['New York', 'London', 'Paris']}
+df = pd.DataFrame(data)
+print("DataFrame from Dictionary:")
+print(df)
+
+
+##2. From a List of Lists:
+
+import pandas as pd
+
+data = [['Alice', 25, 'New York'],
+        ['Bob', 30, 'London'],
+        ['Charlie', 22, 'Paris']]
+df = pd.DataFrame(data, columns=['Name', 'Age', 'City'])
+print("\nDataFrame from List of Lists:")
+print(df)
+
+
+##3. From a List of Dictionaries:
+
+import pandas as pd
+
+data = [{'Name': 'Alice', 'Age': 25, 'City': 'New York'},
+        {'Name': 'Bob', 'Age': 30, 'City': 'London'},
+        {'Name': 'Charlie', 'Age': 22, 'City': 'Paris'}]
+df = pd.DataFrame(data)
+print("\nDataFrame from List of Dictionaries:")
+print(df)
+
+
+##4. From External Files (CSV, Excel, etc.):
+import pandas as pd
+
+# From a CSV file
+# df_csv = pd.read_csv('data.csv')
+# print(df_csv.head())
+
+# From an Excel file
+# df_excel = pd.read_excel('data.xlsx')
+# print(df_excel.head())
+
+
+##5. From a NumPy Array:
+
+import numpy as np
+import pandas as pd
+
+data = np.array([[1, 2, 3],
+                 [4, 5, 6],
+                 [7, 8, 9]])
+df_np = pd.DataFrame(data, columns=['ColA', 'ColB', 'ColC'])
+print("\nDataFrame from NumPy Array:")
+print(df_np)
+
+##ii. Loading CSV dataset files using Pandas
+
+import pandas as pd
+
+# Example: load dataset (path to be replaced by your file)
+# df = pd.read_csv('/content/drive/MyDrive/your_folder/your_file.csv')
+# print(df.head())
+
+
+##iii. Loading datasets using sklearn
+
+from sklearn.datasets import load_iris, load_digits, load_diabetes
+
+# Load Iris dataset
+iris = load_iris()
+X_iris, y_iris = iris.data, iris.target
+print("Iris dataset features (first 5 rows):\n", X_iris[:5])
+
+# Load Digits dataset
+digits = load_digits()
+print("\nDigits dataset shape:", digits.data.shape)
+
+# Load Diabetes dataset
+diabetes = load_diabetes()
+print("\nDiabetes dataset shape:", diabetes.data.shape)
+
+
+##iv. Loading data sets into Google Colab
+from google.colab import files
+uploaded = files.upload()
+
+
+##b) Write a python program to compute Mean, Median, Mode, Variance, Standard Deviation using Datasets
+
+import pandas as pd
+from scipy import stats
+
+# Create sample dataset
+data = {'Marks': [85, 90, 78, 92, 88, 90, 75]}
+df = pd.DataFrame(data)
+
+# Compute statistics
+mean_value = df['Marks'].mean()
+median_value = df['Marks'].median()
+mode_value = df['Marks'].mode()[0]
+variance_value = df['Marks'].var()
+std_dev_value = df['Marks'].std()
+
+print("Mean:", mean_value)
+print("Median:", median_value)
+print("Mode:", mode_value)
+print("Variance:", variance_value)
+print("Standard Deviation:", std_dev_value)
+
+
+##c) Demonstrate various data pre-processing techniques for a given dataset. Write a python program to compute
+
+##i. Reshaping the data
+
+import numpy as np
+
+arr = np.arange(1, 13)
+reshaped = arr.reshape(3, 4)
+print("Original Array:\n", arr)
+print("Reshaped (3x4):\n", reshaped)
+
+
+##ii. Filtering the data
+
+import pandas as pd
+
+data = {'Name': ['Alice', 'Bob', 'Charlie', 'David'],
+        'Age': [25, 30, 22, 28],
+        'Marks': [85, 90, 70, 88]}
+df = pd.DataFrame(data)
+
+# Filter students with marks greater than 80
+filtered_df = df[df['Marks'] > 80]
+print("Filtered Data (Marks > 80):\n", filtered_df)
+
+
+##iii. Merging the data
+
+df1 = pd.DataFrame({'ID': [1, 2, 3],
+                    'Name': ['Alice', 'Bob', 'Charlie']})
+
+df2 = pd.DataFrame({'ID': [1, 2, 3],
+                    'Marks': [85, 90, 95]})
+
+merged_df = pd.merge(df1, df2, on='ID')
+print("Merged DataFrame:\n", merged_df)
+
+
+##iv. Handling the missing values in datasets
+import pandas as pd
+import numpy as np
+
+data = {'Name': ['Alice', 'Bob', 'Charlie', 'David'],
+        'Marks': [85, np.nan, 75, np.nan]}
+df = pd.DataFrame(data)
+
+print("Original DataFrame with Missing Values:\n", df)
+
+# Fill missing values with mean
+df['Marks'].fillna(df['Marks'].mean(), inplace=True)
+print("\nAfter Filling Missing Values with Mean:\n", df)
+
+# Or drop missing values
+# df = df.dropna()
+
+
+##v. Feature Normalization: Min-max normalization, Scalar Normalization etc.
+
+from sklearn.preprocessing import MinMaxScaler
+import pandas as pd
+
+data = {'Marks': [85, 90, 78, 92, 88]}
+df = pd.DataFrame(data)
+
+scaler = MinMaxScaler()
+df['Marks_Normalized'] = scaler.fit_transform(df[['Marks']])
+print("Min-Max Normalization:\n", df)
+
+
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+df['Marks_Standardized'] = scaler.fit_transform(df[['Marks']])
+print("\nZ-score (Standard) Normalization:\n", df)
+
+
+###Assignment_4
+
+##(a) Design and implement a neural network that acts as a AND classifier for binary input.
+
+import numpy as np
+from tensorflow import keras
+from tensorflow.keras import layers
+
+# Input data (X) and output labels (y)
+X = np.array([[0,0], [0,1], [1,0], [1,1]])
+y = np.array([[0], [0], [0], [1]])
+# Build the model
+model = keras.Sequential([
+    layers.Dense(1, input_dim=2, activation='sigmoid')
+])
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+history = model.fit(X, y, epochs=500, verbose=0)
+loss, accuracy = model.evaluate(X, y)
+print(f"Training Accuracy: {accuracy*100:.2f}%")
+# Predict outputs
+predictions = model.predict(X)
+
+# Round results to get 0 or 1
+print("\nPredicted Output:")
+for i in range(len(X)):
+    print(f"Input: {X[i]} -> Predicted: {np.round(predictions[i][0])}")
+
+
+##(b) Design and implement a neural network that acts as a OR classifier for binary input.
+
+import numpy as np
+from tensorflow import keras
+from tensorflow.keras import layers
+import matplotlib.pyplot as plt
+X = np.array([[0,0], [0,1], [1,0], [1,1]])
+y = np.array([[0], [1], [1], [1]])
+model = keras.Sequential([
+    #layers.Dense(1, input_dim=2, activation='sigmoid')
+    layers.Dense(2, input_dim=2, activation='relu'),   # hidden layer with 2 neurons
+    layers.Dense(1, activation='sigmoid')
+])
+optimizer = keras.optimizers.Adam(learning_rate=0.05)
+model.compile(optimizer=optimizer, loss='binary_crossentropy', metrics=['accuracy'])
+#model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+history = model.fit(X, y, epochs=2000, verbose=0)
+loss, accuracy = model.evaluate(X, y)
+print(f"Training Accuracy: {accuracy*100:.2f}%")
+predictions = model.predict(X)
+
+print("\nPredicted Output:")
+for i in range(len(X)):
+    print(f"Input: {X[i]} -> Predicted: {np.round(predictions[i][0])}")
+
+##(c) Design and implement a neural network that acts as a NAND classifier for binary input.
+
+import numpy as np
+from tensorflow import keras
+from tensorflow.keras import layers
+import matplotlib.pyplot as plt
+# Input and output for NAND gate
+X = np.array([[0,0], [0,1], [1,0], [1,1]])
+y = np.array([[1], [1], [1], [0]])
+model = keras.Sequential([
+    layers.Dense(2, input_dim=2, activation='relu'),
+    layers.Dense(1, activation='sigmoid')
+])
+optimizer = keras.optimizers.Adam(learning_rate=0.05)
+model.compile(optimizer=optimizer, loss='binary_crossentropy', metrics=['accuracy'])
+history = model.fit(X, y, epochs=2000, verbose=0)
+loss, accuracy = model.evaluate(X, y)
+print(f"Training Accuracy: {accuracy*100:.2f}%")
+predictions = model.predict(X)
+
+print("\nPredicted Output:")
+for i in range(len(X)):
+    print(f"Input: {X[i]} -> Predicted: {np.round(predictions[i][0])}")
+
+
+##(d) Design and implement a neural network that acts as a XOR classifier for binary input, 
+##Comment on the inability of this NN to classify the i/p data.
+
+import numpy as np
+from tensorflow import keras
+from tensorflow.keras import layers
+import matplotlib.pyplot as plt
+X = np.array([[0,0], [0,1], [1,0], [1,1]])
+y = np.array([[0], [1], [1], [0]])
+model = keras.Sequential([
+    layers.Dense(2, input_dim=2, activation='relu'),
+    layers.Dense(1, activation='sigmoid')
+])
+optimizer = keras.optimizers.Adam(learning_rate=0.05)
+model.compile(optimizer=optimizer, loss='binary_crossentropy', metrics=['accuracy'])
+history = model.fit(X, y, epochs=5000, verbose=0)
+loss, accuracy = model.evaluate(X, y)
+print(f"Training Accuracy: {accuracy*100:.2f}%")
+predictions = model.predict(X)
+
+print("\nPredicted Output:")
+for i in range(len(X)):
+    print(f"Input: {X[i]} -> Predicted: {np.round(predictions[i][0])}")
+
+
+##(e) Design and implement a sequential, dense neural network that acts as a classifier for 
+##the Iris dataset, tune your neural network with different hyperparameter values for 
+##learning rate, architecture and epochs.
+
+# Cell 1: imports & data loading
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from tensorflow import keras
+from tensorflow.keras import layers
+from tensorflow.keras.utils import to_categorical
+import tensorflow as tf
+
+# Fix seed for reproducibility (optional)
+np.random.seed(42)
+tf.random.set_seed(42)
+
+# Load data
+iris = load_iris()
+X = iris.data          # shape (150,4)
+y = iris.target        # 0,1,2
+
+# Train/test split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, stratify=y, random_state=42
+)
+
+# Scale features
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# One-hot encode labels for Keras
+y_train_ohe = to_categorical(y_train, num_classes=3)
+y_test_ohe = to_categorical(y_test, num_classes=3)
+
+print("Train shape:", X_train.shape, y_train_ohe.shape)
+print("Test shape:", X_test.shape, y_test_ohe.shape)
+# Cell 2: model builder function
+def build_model(input_dim, num_classes, hidden_units=[64, 32], learning_rate=0.001):
+    """
+    Returns a compiled keras Sequential model.
+    hidden_units: list of ints (neurons per hidden Dense layer)
+    """
+    model = keras.Sequential()
+    # Input + first hidden layer
+    for i, units in enumerate(hidden_units):
+        if i == 0:
+            model.add(layers.Dense(units, activation='relu', input_shape=(input_dim,)))
+        else:
+            model.add(layers.Dense(units, activation='relu'))
+        # optional: add dropout or batchnorm here if you want
+    # Output layer (softmax for multi-class)
+    model.add(layers.Dense(num_classes, activation='softmax'))
+
+    optimizer = keras.optimizers.Adam(learning_rate=learning_rate)
+    model.compile(optimizer=optimizer,
+                  loss='categorical_crossentropy',
+                  metrics=['accuracy'])
+    return model
+# Cell 3: hyperparameter sweep
+learning_rates = [0.01, 0.001, 0.0005]
+architectures = [
+    [32],          # single layer 32
+    [64, 32],      # two layers
+    [128, 64, 32]  # deeper network
+]
+epoch_list = [50, 100, 200]
+
+results = []
+best_history = None
+best_val_acc = -1
+best_config = None
+
+for lr in learning_rates:
+    for arch in architectures:
+        for epochs in epoch_list:
+            tf.keras.backend.clear_session()
+            model = build_model(input_dim=X_train.shape[1], num_classes=3, hidden_units=arch, learning_rate=lr)
+            # Train with a small validation split. verbose=0 to keep output clean.
+            history = model.fit(X_train, y_train_ohe, validation_split=0.2, epochs=epochs, batch_size=8, verbose=0)
+            # Evaluate on the held-out test set
+            test_loss, test_acc = model.evaluate(X_test, y_test_ohe, verbose=0)
+            # record
+            results.append({
+                "learning_rate": lr,
+                "architecture": str(arch),
+                "epochs": epochs,
+                "test_loss": float(test_loss),
+                "test_accuracy": float(test_acc)
+            })
+            # keep best by test_accuracy
+            if test_acc > best_val_acc:
+                best_val_acc = test_acc
+                best_history = history
+                best_model = model
+                best_config = {"lr": lr, "arch": arch, "epochs": epochs}
+
+# Convert results to DataFrame and sort
+results_df = pd.DataFrame(results).sort_values(by='test_accuracy', ascending=False).reset_index(drop=True)
+results_df
+# Cell 4: show results
+print("Top 5 results:")
+display(results_df.head(5))
+
+print("\nBest config (by test accuracy):")
+print(best_config)
+print(f"Best test accuracy: {best_val_acc*100:.2f}%")
+# Cell 5: plot training loss & accuracy for best run
+hist = best_history.history
+
+plt.figure(figsize=(12,4))
+plt.subplot(1,2,1)
+plt.plot(hist['loss'], label='train_loss')
+plt.plot(hist['val_loss'], label='val_loss')
+plt.title('Loss (best config)')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.legend()
+plt.grid(True)
+
+plt.subplot(1,2,2)
+plt.plot(hist['accuracy'], label='train_acc')
+plt.plot(hist['val_accuracy'], label='val_acc')
+plt.title('Accuracy (best config)')
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.grid(True)
+plt.show()
+# Cell 6: predictions + confusion matrix
+from sklearn.metrics import confusion_matrix, classification_report
+
+y_pred_proba = best_model.predict(X_test)
+y_pred = np.argmax(y_pred_proba, axis=1)
+
+print("Test accuracy (again):", best_model.evaluate(X_test, y_test_ohe, verbose=0)[1])
+print("\nConfusion Matrix:")
+print(confusion_matrix(y_test, y_pred))
+
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred, target_names=iris.target_names))
+
+
+##(f) Design and implement a sequential, dense neural network that acts as a classifier for 
+##the diabetes dataset provided to you in class, tune your neural network with different 
+##hyperparameter values for learning rate, architecture and epochs
+
+# Step 1: Imports and dataset loading
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_diabetes
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from tensorflow import keras
+from tensorflow.keras import layers
+import tensorflow as tf
+
+# Set seed for reproducibility
+np.random.seed(42)
+tf.random.set_seed(42)
+
+# Load dataset (regression version, we’ll convert to binary for classification)
+diabetes = load_diabetes()
+X = diabetes.data
+y = diabetes.target
+
+# Convert continuous target to binary: 1 if above mean, else 0
+y = (y > y.mean()).astype(int)
+
+print("Feature shape:", X.shape)
+print("Target distribution:", np.unique(y, return_counts=True))
+# Step 2: Split into train/test
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+# Scale features for better convergence
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+# Step 3: Model builder function
+def build_model(input_dim, hidden_layers=[32, 16], learning_rate=0.001):
+    model = keras.Sequential()
+    model.add(keras.Input(shape=(input_dim,)))  # ✅ modern way (no warnings)
+    for units in hidden_layers:
+        model.add(layers.Dense(units, activation='relu'))
+    model.add(layers.Dense(1, activation='sigmoid'))  # binary output
+    
+    optimizer = keras.optimizers.Adam(learning_rate=learning_rate)
+    model.compile(optimizer=optimizer, loss='binary_crossentropy', metrics=['accuracy'])
+    return model
+# Step 4: Hyperparameter tuning
+learning_rates = [0.01, 0.001, 0.0005]
+architectures = [
+    [16],        # small model
+    [32, 16],    # medium
+    [64, 32, 16] # deeper model
+]
+epoch_list = [50, 100, 200]
+
+results = []
+best_acc = 0
+best_model = None
+best_config = None
+best_history = None
+
+for lr in learning_rates:
+    for arch in architectures:
+        for epochs in epoch_list:
+            tf.keras.backend.clear_session()
+            model = build_model(X_train.shape[1], arch, lr)
+            history = model.fit(X_train, y_train, validation_split=0.2, epochs=epochs, batch_size=8, verbose=0)
+            test_loss, test_acc = model.evaluate(X_test, y_test, verbose=0)
+            
+            results.append({
+                "learning_rate": lr,
+                "architecture": str(arch),
+                "epochs": epochs,
+                "test_accuracy": test_acc
+            })
+            
+            if test_acc > best_acc:
+                best_acc = test_acc
+                best_model = model
+                best_history = history
+                best_config = {"lr": lr, "arch": arch, "epochs": epochs}
+
+results_df = pd.DataFrame(results).sort_values(by="test_accuracy", ascending=False)
+results_df.head()
+print("Best Configuration:")
+print(best_config)
+print(f"Best Test Accuracy: {best_acc*100:.2f}%")
+# Step 6: Plot loss and accuracy
+hist = best_history.history
+plt.figure(figsize=(12,4))
+
+plt.subplot(1,2,1)
+plt.plot(hist['loss'], label='train_loss')
+plt.plot(hist['val_loss'], label='val_loss')
+plt.title('Loss Curve')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.legend()
+plt.grid(True)
+
+plt.subplot(1,2,2)
+plt.plot(hist['accuracy'], label='train_acc')
+plt.plot(hist['val_accuracy'], label='val_acc')
+plt.title('Accuracy Curve')
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.grid(True)
+plt.show()
+# Step 7: Final evaluation
+from sklearn.metrics import confusion_matrix, classification_report
+
+y_pred = (best_model.predict(X_test) > 0.5).astype(int)
+
+print("Confusion Matrix:")
+print(confusion_matrix(y_test, y_pred))
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
+
+
+##(g) Design and implement a sequential, dense neural network that acts as a classifier for 
+##the heart dataset provided in class, tune your neural network with different 
+##hyperparameter values for learning rate, architecture and epochs.
+
+# Cell 1 - imports & load
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import confusion_matrix, classification_report, roc_auc_score, roc_curve
+
+# reproducibility
+np.random.seed(42)
+tf.random.set_seed(42)
+
+# Load dataset (change filename if needed)
+df = pd.read_csv('heart.csv')   # <-- replace with the CSV given in class if different
+df.head(), df.shape
+# Cell 2 - inspect
+print(df.info())
+print(df.describe())
+
+# Identify target column (common names: 'target'/'Outcome'/'heart_disease'/'label')
+# Replace 'target' below with the actual column name in your CSV if different.
+target_col = 'target'   # <- change if your CSV uses another name
+
+# show label distribution
+print("Label distribution:\n", df[target_col].value_counts(normalize=False))
+# Cell 3 - preprocessing
+# If there are missing values:
+if df.isnull().sum().sum() > 0:
+    print("Missing values present. Filling with column median.")
+    df = df.fillna(df.median())  # simple fix; change if teacher expects different
+
+# If there are categorical columns with dtype object, one-hot encode them:
+cat_cols = df.select_dtypes(include=['object','category']).columns.tolist()
+if cat_cols:
+    df = pd.get_dummies(df, columns=cat_cols, drop_first=True)
+
+# Split features & labels
+X = df.drop(columns=[target_col]).values
+y = df[target_col].values
+
+# Train/test split (stratify to keep class balance)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+# Scale features
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+print("Shapes:", X_train.shape, X_test.shape, y_train.shape, y_test.shape)
+# Cell 4 - model builder
+def build_model(input_dim, hidden_layers=[32,16], learning_rate=0.001):
+    model = keras.Sequential()
+    model.add(keras.Input(shape=(input_dim,)))
+    for units in hidden_layers:
+        model.add(layers.Dense(units, activation='relu'))
+    model.add(layers.Dense(1, activation='sigmoid'))
+    optimizer = keras.optimizers.Adam(learning_rate=learning_rate)
+    model.compile(optimizer=optimizer, loss='binary_crossentropy', metrics=['accuracy'])
+    return model
+# Cell 5 - hyperparameter sweep
+learning_rates = [0.01, 0.001, 0.0005]
+architectures = [
+    [16],
+    [32, 16],
+    [64, 32, 16]
+]
+epoch_list = [50, 100]
+
+results = []
+best_acc = -1
+best_model = None
+best_hist = None
+best_cfg = None
+
+for lr in learning_rates:
+    for arch in architectures:
+        for epochs in epoch_list:
+            tf.keras.backend.clear_session()
+            model = build_model(X_train.shape[1], hidden_layers=arch, learning_rate=lr)
+            # optional: use EarlyStopping to avoid wasted epochs
+            es = keras.callbacks.EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
+            history = model.fit(X_train, y_train, validation_split=0.2,
+                                epochs=epochs, batch_size=16, verbose=0, callbacks=[es])
+            test_loss, test_acc = model.evaluate(X_test, y_test, verbose=0)
+            results.append({
+                'lr': lr,
+                'arch': str(arch),
+                'epochs_trained': len(history.history['loss']),
+                'test_loss': float(test_loss),
+                'test_accuracy': float(test_acc)
+            })
+            if test_acc > best_acc:
+                best_acc = test_acc
+                best_model = model
+                best_hist = history
+                best_cfg = {'lr': lr, 'arch': arch, 'epochs_requested': epochs}
+
+# show results as DataFrame
+results_df = pd.DataFrame(results).sort_values(by='test_accuracy', ascending=False).reset_index(drop=True)
+results_df.head(10)
+# Cell 6 - best config and metrics
+print("Best config:", best_cfg)
+print(f"Best test accuracy: {best_acc*100:.2f}%")
+display(results_df)
+
+# Predictions and more metrics on test set
+y_pred_prob = best_model.predict(X_test).ravel()
+y_pred = (y_pred_prob >= 0.5).astype(int)
+
+print("\nConfusion Matrix:")
+print(confusion_matrix(y_test, y_pred))
+
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
+
+# ROC-AUC
+try:
+    auc = roc_auc_score(y_test, y_pred_prob)
+    print(f"\nROC AUC: {auc:.4f}")
+    fpr, tpr, _ = roc_curve(y_test, y_pred_prob)
+    plt.figure()
+    plt.plot(fpr, tpr)
+    plt.plot([0,1],[0,1], '--')
+    plt.xlabel('FPR')
+    plt.ylabel('TPR')
+    plt.title('ROC Curve (best model)')
+    plt.grid(True)
+    plt.show()
+except Exception as e:
+    print("ROC AUC could not be computed:", e)
+# Cell 7 - training curves
+hist = best_hist.history
+plt.figure(figsize=(12,4))
+plt.subplot(1,2,1)
+plt.plot(hist['loss'], label='train_loss')
+plt.plot(hist.get('val_loss', []), label='val_loss')
+plt.title('Loss (best config)')
+plt.xlabel('Epochs')
+plt.legend()
+plt.grid(True)
+
+plt.subplot(1,2,2)
+plt.plot(hist['accuracy'], label='train_acc')
+plt.plot(hist.get('val_accuracy', []), label='val_acc')
+plt.title('Accuracy (best config)')
+plt.xlabel('Epochs')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+
+
+###Assignment_5
+
+##(a) Implement the Find-S algorithm on the data sets provided to you to induce hypotheses from training data.
+
+import pandas as pd
+
+# Step 1: Define dataset
+# data = [
+#     ['Sunny', 'Warm', 'Normal', 'Strong', 'Warm', 'Same', 'Yes'],
+#     ['Sunny', 'Warm', 'High',   'Strong', 'Warm', 'Same', 'Yes'],
+#     ['Rainy', 'Cold', 'High',   'Strong', 'Warm', 'Change', 'No'],
+#     ['Sunny', 'Warm', 'High',   'Strong', 'Cool', 'Change', 'Yes']
+# ]
+
+# attributes = ['Sky', 'AirTemp', 'Humidity', 'Wind', 'Water', 'Forecast']
+# df = pd.DataFrame(data, columns=attributes + ['EnjoySport'])
+
+df = pd.read_csv("enjoysport.csv")
+
+print("Dataset:\n", df)
+
+# Step 2: Find-S Algorithm
+def find_s(examples, attributes):
+    n = len(attributes)
+    hypothesis = ['ϕ'] * n  # Most specific hypothesis
+
+    for i, row in examples.iterrows():
+        if row['EnjoySport'] == 'Yes':  # Positive example
+            if hypothesis == ['ϕ'] * n:
+                hypothesis = row[attributes].tolist()
+            else:
+                for j in range(n):
+                    if hypothesis[j] != row[attributes[j]]:
+                        hypothesis[j] = '?'
+    return hypothesis
+
+# Step 3: Run Find-S
+final_hypothesis = find_s(df, attributes)
+print("\nFinal Hypothesis (Find-S):", final_hypothesis)
+
+
+##(b) Implement the Candidate Elimination (aka List-Then-Eliminate) algorithm on the data 
+##sets provided to you to list of all possible hypotheses and eliminating the ones that do 
+##not fit the training examples.
+
+import pandas as pd
+
+# Step 1: Define dataset
+# data = [
+#     ['Sunny', 'Warm', 'Normal', 'Strong', 'Warm', 'Same', 'Yes'],
+#     ['Sunny', 'Warm', 'High',   'Strong', 'Warm', 'Same', 'Yes'],
+#     ['Rainy', 'Cold', 'High',   'Strong', 'Warm', 'Change', 'No'],
+#     ['Sunny', 'Warm', 'High',   'Strong', 'Cool', 'Change', 'Yes']
+# ]
+
+# attributes = ['Sky', 'AirTemp', 'Humidity', 'Wind', 'Water', 'Forecast']
+# df = pd.DataFrame(data, columns=attributes + ['EnjoySport'])
+
+df = pd.read_csv("enjoysport.csv")
+
+print("Dataset:\n", df)
+
+# Step 2: Initialize S and G
+S = [['ϕ'] * len(attributes)]
+G = [['?'] * len(attributes)]
+
+# Step 3: Candidate Elimination Algorithm
+for i, row in df.iterrows():
+    if row['EnjoySport'] == 'Yes':
+        # Positive example
+        for s in S:
+            for j in range(len(attributes)):
+                if s[j] == 'ϕ':
+                    s[j] = row[attributes[j]]
+                elif s[j] != row[attributes[j]]:
+                    s[j] = '?'
+        # Remove more general hypotheses from G
+        G = [g for g in G if all(s[k] == '?' or g[k] == '?' or s[k] == g[k] for k in range(len(attributes)))]
+    else:
+        # Negative example
+        G_new = []
+        for g in G:
+            for j in range(len(attributes)):
+                if g[j] == '?':
+                    if S[0][j] != row[attributes[j]]:
+                        new_hypothesis = g.copy()
+                        new_hypothesis[j] = S[0][j]
+                        G_new.append(new_hypothesis)
+        G = G_new
+
+print("\nFinal Specific boundary (S):", S)
+print("Final General boundary (G):", G)
+
+
+###Assignment_6
+
+Assignment:
+1. Design and implement the naïve Bayes classifier using the data set available at 
+/kaggle/input/adult-dataset/adult.csv that has 15 attributes, segregate the dataset into 
+categorical and numerical variables. Income is the target variable. 
+a) Check for missing values, output a frequency count of the categorical variables and 
+view frequency distribution of categorical variables. 
+b) Check for missing values in workclass, occupation and native_country 
+(replace ? with NaN). 
+c) Check labels in workclass variable, check frequency distribution of values in 
+workclass variable. Do the same for other two variables of (c)
+d) Print categorical variables with missing data and impute missing categorical variables 
+with most frequent value
+e) Explore the numerical variables and problems in them (is null, sum etc)
+f) Declare the feature variables and target variable.
+g) Split the data set for train and test purpose, and make sure there are no missing values
+h) Use one-hot encoding to encode 'workclass', 'education', 'marital_status', 'occupation', 
+'relationship', 'race', 'sex', 'native_country'
+i) Do a feature Scaling- use RobustScaler form sklearn to transform the training and 
+testing features (learning and test data)
+j) Fit the GaussianNB model to the training data
+k) Use the above to predict the income for the test data.
+l) Print model accuracy
+m) Check for over fitting and under fitting
+n)Compare model accuracy with null accuracy to find out how good the NB model was.
+o)Also print the confusion matrix to show number of correct predictions and incorrect 
+p) Print classification report using classification_report from sklearn.metrics for 
+precision, recall, f1 and support
+
+# Assignment 6: Gaussian Naive Bayes on Adult Dataset
+# Run in Jupyter/Colab/VSCode. Adjust path_to_csv if needed.
+
+import os
+import numpy as np
+import pandas as pd
+from collections import Counter
+
+# sklearn imports
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import RobustScaler
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+# For reproducibility
+RANDOM_STATE = 42
+
+# ---------------------------
+# 0) load dataset (adjust path if necessary)
+# ---------------------------
+# Try the kaggle path you mentioned, otherwise ask user to set path variable
+possible_paths = [
+    "/kaggle/input/adult-dataset/adult.csv",
+    "/kaggle/input/adult/adult.csv",
+    "adult.csv",
+    "./adult.csv"
+]
+
+path_to_csv = None
+for p in possible_paths:
+    if os.path.exists(p):
+        path_to_csv = p
+        break
+
+if path_to_csv is None:
+    # fallback: user needs to provide path — but code will still show everything else
+    raise FileNotFoundError(
+        "Could not find adult.csv automatically. Place the dataset in the notebook folder or update 'path_to_csv'.\n"
+        "Common Kaggle path: /kaggle/input/adult-dataset/adult.csv\n"
+        "You can download from UCI or Kaggle (search 'adult dataset')."
+    )
+
+print("Loading dataset from:", path_to_csv)
+df = pd.read_csv(path_to_csv, header=0)
+
+# Quick look
+print("\nDataset shape:", df.shape)
+print("Columns:", df.columns.tolist())
+print("\nFirst 5 rows:")
+display(df.head())
+
+# ---------------------------
+# a) Check for missing values; frequency counts and distribution of categorical variables
+# Note: dataset uses '?' to indicate missing categorical values in some versions.
+# ---------------------------
+# Replace '?' with np.nan for correct missing detection
+df = df.replace('?', np.nan)
+
+print("\nMissing values per column:")
+print(df.isnull().sum())
+
+# Identify categorical vs numerical columns
+cat_cols = df.select_dtypes(include=['object']).columns.tolist()
+num_cols = df.select_dtypes(include=[np.number]).columns.tolist()
+
+print("\nCategorical columns:", cat_cols)
+print("Numerical columns:", num_cols)
+
+# Frequency counts for all categorical variables
+print("\nFrequency counts for categorical variables:")
+for c in cat_cols:
+    print(f"\n-- {c} (value counts):")
+    print(df[c].value_counts(dropna=False).head(10))  # show top 10
+
+# ---------------------------
+# b) Check for missing values specifically in workclass, occupation, native-country
+# ---------------------------
+for col in ['workclass', 'occupation', 'native-country']:
+    if col in df.columns:
+        missing_count = df[col].isnull().sum()
+        print(f"\nMissing in '{col}': {missing_count} rows")
+
+# ---------------------------
+# c) Check labels & frequency distribution for workclass, occupation, native-country
+# ---------------------------
+for col in ['workclass', 'occupation', 'native-country']:
+    if col in df.columns:
+        print(f"\nValue counts for {col}:")
+        print(df[col].value_counts(dropna=False))
+
+# ---------------------------
+# d) Print categorical variables with missing data and impute with most frequent (mode)
+# ---------------------------
+cat_with_missing = [c for c in cat_cols if df[c].isnull().sum() > 0]
+print("\nCategorical columns with missing data:", cat_with_missing)
+
+# Impute missing categorical variables with most frequent value:
+for c in cat_with_missing:
+    mode_val = df[c].mode(dropna=True)[0]  # most frequent
+    df[c].fillna(mode_val, inplace=True)
+    print(f"Imputed missing values in '{c}' with mode: '{mode_val}'")
+
+print("\nAfter imputation, missing counts (categorical):")
+print(df[cat_with_missing].isnull().sum())
+
+# ---------------------------
+# e) Explore numerical variables and problems (nulls, sum, basic stats)
+# ---------------------------
+print("\nNumerical columns null counts and summary:")
+print(df[num_cols].isnull().sum())
+print("\nNumerical columns description:")
+print(df[num_cols].describe().T)
+
+# ---------------------------
+# f) Declare feature variables and target variable
+# (Income is the target — possible labels '>50K' and '<=50K' or with trailing dot in some versions)
+# ---------------------------
+target_col = None
+for candidate in ['income', ' Income', 'label', 'target']:
+    if candidate in df.columns:
+        target_col = candidate
+        break
+
+if target_col is None:
+    # try columns that look like income
+    for c in df.columns:
+        if 'income' in c.lower():
+            target_col = c
+            break
+
+if target_col is None:
+    raise KeyError("Could not find target column (income). Check dataset columns.")
+
+print("\nDetected target column:", target_col)
+y_raw = df[target_col].astype(str).str.strip()  # strip spaces
+
+# Normalize labels (some files have trailing '.' in test file)
+y_raw = y_raw.replace({'<=50K.': '<=50K', '>50K.': '>50K'})
+
+print("Target value counts:")
+print(y_raw.value_counts())
+
+# features: drop target and any identifier or irrelevant column (fnlwgt often dropped)
+X = df.drop(columns=[target_col]).copy()
+
+# Drop fnlwgt if present (sampling weight) because it's not predictive in this assignment context
+if 'fnlwgt' in X.columns:
+    print("Dropping 'fnlwgt' column (sampling weight).")
+    X.drop(columns=['fnlwgt'], inplace=True)
+
+# ---------------------------
+# g) Split dataset for train/test and ensure no missing values
+# We'll encode after splitting to avoid data leakage (but one-hot with pandas.get_dummies across full set is common too).
+# Strategy here: do encoding on full feature set to ensure consistent columns; alternatively use fit/transform on train only.
+# We'll do encoding on the full dataset after imputations above (safe because imputation used only modes).
+# ---------------------------
+# One-hot encode categorical (next step i) but we'll do here before splitting, then scale per train/test.
+# ---------------------------
+
+# ---------------------------
+# h) One-hot encoding for specified categorical columns
+# ---------------------------
+#cols_to_encode = ['workclass', 'education', 'marital-status', 'occupation','relationship', 'race', 'sex', 'native-country']
+
+# --- Identify all object-type columns dynamically ---
+cat_cols_dynamic = X.select_dtypes(include=['object']).columns.tolist()
+print("All categorical columns automatically detected:", cat_cols_dynamic)
+
+# --- Strip whitespace ---
+for c in cat_cols_dynamic:
+    X[c] = X[c].astype(str).str.strip()
+
+# --- One-hot encode all object columns ---
+X = pd.get_dummies(X, columns=cat_cols_dynamic, drop_first=False)
+
+print("After encoding, dataset shape:", X.shape)
+print("All columns numeric?", X.dtypes.apply(lambda x: np.issubdtype(x, np.number)).all())
+
+
+# There can be minor naming differences (e.g., 'marital-status' vs 'marital_status'); map names if needed
+cols_normalized = []
+for name in cols_to_encode:
+    if name in X.columns:
+        cols_normalized.append(name)
+    else:
+        # try underscore variant
+        alt = name.replace('-', '_')
+        if alt in X.columns:
+            cols_normalized.append(alt)
+        else:
+            # attempt to find similar column ignoring case/characters
+            for c in X.columns:
+                if c.replace('-', '_').lower() == name.replace('-', '_').lower():
+                    cols_normalized.append(c)
+                    break
+
+cols_normalized = list(dict.fromkeys(cols_normalized))  # unique
+
+print("\nColumns that will be one-hot encoded (found):", cols_normalized)
+
+# Make a copy for encoding
+X_enc = X.copy()
+
+# Strip whitespace for object/string columns to avoid duplicate categories
+for c in X_enc.select_dtypes(include=['object']).columns:
+    X_enc[c] = X_enc[c].astype(str).str.strip()
+
+# Use pandas.get_dummies for simplicity (one-hot)
+X_enc = pd.get_dummies(X_enc, columns=cols_normalized, drop_first=False)
+
+print("\nAfter one-hot, feature shape:", X_enc.shape)
+
+# Check for any remaining missing values
+print("\nAny missing values in features after encoding?", X_enc.isnull().any().any())
+
+# ---------------------------
+# i) Feature scaling using RobustScaler on numeric columns (fit on train, transform both)
+# We'll split now, then scale numeric columns only.
+# ---------------------------
+# Prepare final X and y
+X_final = X_enc.copy()
+y = y_raw.copy()
+
+# Convert target to binary numeric: <=50K -> 0, >50K -> 1
+y_num = y.replace({'<=50K': 0, '>50K': 1}).astype(int)
+
+# Train/test split
+X_train, X_test, y_train, y_test = train_test_split(
+    X_final, y_num, test_size=0.25, random_state=RANDOM_STATE, stratify=y_num
+)
+
+print("\nTrain shape:", X_train.shape, "Test shape:", X_test.shape)
+
+# Identify numeric columns to scale (those with numeric dtype)
+numeric_cols_to_scale = X_train.select_dtypes(include=[np.number]).columns.tolist()
+print("\nNumeric columns count to scale:", len(numeric_cols_to_scale))
+
+# Use RobustScaler
+scaler = RobustScaler()
+# Fit on training numeric columns
+X_train_num = scaler.fit_transform(X_train[numeric_cols_to_scale])
+X_test_num = scaler.transform(X_test[numeric_cols_to_scale])
+
+# Replace numeric columns in copies with scaled versions
+X_train_scaled = X_train.copy()
+X_test_scaled = X_test.copy()
+X_train_scaled[numeric_cols_to_scale] = X_train_num
+X_test_scaled[numeric_cols_to_scale] = X_test_num
+
+# Final check: no missing values
+print("\nMissing in X_train_scaled:", X_train_scaled.isnull().sum().sum())
+print("Missing in X_test_scaled:", X_test_scaled.isnull().sum().sum())
+
+# ---------------------------
+# j) Fit GaussianNB model to training data
+# ---------------------------
+gnb = GaussianNB()
+gnb.fit(X_train_scaled, y_train)
+
+# ---------------------------
+# k) Predict income for test data
+# ---------------------------
+y_pred = gnb.predict(X_test_scaled)
+
+# ---------------------------
+# l) Print model accuracy
+# ---------------------------
+acc = accuracy_score(y_test, y_pred)
+print(f"\nTest Accuracy: {acc:.4f}")
+
+# ---------------------------
+# m) Check overfitting/underfitting: compare train vs test accuracy
+# ---------------------------
+y_train_pred = gnb.predict(X_train_scaled)
+train_acc = accuracy_score(y_train, y_train_pred)
+print(f"Train Accuracy: {train_acc:.4f}")
+print("If train >> test -> overfitting; if both low -> underfitting. Here:")
+if train_acc - acc > 0.05:
+    print("Warning: possible overfitting (train accuracy substantially higher than test).")
+else:
+    print("No major overfitting detected from accuracy difference.")
+
+# ---------------------------
+# n) Compare with null accuracy (majority class baseline)
+# ---------------------------
+majority_class = y_test.mode()[0]
+null_acc = max(y_test.mean(), 1 - y_test.mean())  # proportion of majority class
+print(f"\nNull accuracy (majority baseline): {null_acc:.4f}")
+improvement = acc - null_acc
+print(f"Improvement over null accuracy: {improvement:.4f}")
+
+# ---------------------------
+# o) Confusion matrix
+# ---------------------------
+cm = confusion_matrix(y_test, y_pred)
+print("\nConfusion Matrix (rows=true, cols=pred):")
+print(cm)
+
+# ---------------------------
+# p) Classification report
+# ---------------------------
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred, target_names=['<=50K','>50K']))
+
+
+##(2.) Design and implement a Multinomial Naive Bayes Classifier to classify documents into 
+##pre-defined types based on likelihood of a word occurring by using Bayes theorem. The 
+##data set shall be provided as a CSV. The dataset will be of text data categorized into 
+##four labels: Technology, Sports, Politics and Entertainment. Each entry contains a 
+##short sentence or statement related to a specific topic with the label indicating the 
+##category it belongs to.
+
+
+
+# Import necessary libraries
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+# -----------------------------------------------------------
+# 1. Load the dataset
+# -----------------------------------------------------------
+
+# Example: your dataset path (change it to your CSV file location)
+# The CSV should have two columns: "text" and "label"
+# e.g.
+# text,label
+# "New AI chips improve performance",Technology
+# "Team wins the world cup",Sports
+
+data = pd.read_csv("text_dataset1.csv")  # replace with your actual file name
+print("First few rows of dataset:")
+print(data.head())
+
+# -----------------------------------------------------------
+# 2. Check for missing values and basic info
+# -----------------------------------------------------------
+print("\nMissing values per column:")
+print(data.isnull().sum())
+
+# Drop missing entries if any
+data.dropna(inplace=True)
+
+# -----------------------------------------------------------
+# 3. Feature and target separation
+# -----------------------------------------------------------
+X = data['text']          # text column
+y = data['label']         # category labels
+
+# -----------------------------------------------------------
+# 4. Split dataset into training and testing sets
+# -----------------------------------------------------------
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.4, random_state=42, stratify=y
+)
+
+# -----------------------------------------------------------
+# 5. Convert text into numerical features using CountVectorizer
+# -----------------------------------------------------------
+vectorizer = CountVectorizer(stop_words='english')  # removes common words like 'the', 'and'
+X_train_vec = vectorizer.fit_transform(X_train)
+X_test_vec = vectorizer.transform(X_test)
+
+# -----------------------------------------------------------
+# 6. Initialize and train the Multinomial Naive Bayes model
+# -----------------------------------------------------------
+model = MultinomialNB()
+model.fit(X_train_vec, y_train)
+
+# -----------------------------------------------------------
+# 7. Predict on test data
+# -----------------------------------------------------------
+y_pred = model.predict(X_test_vec)
+
+# -----------------------------------------------------------
+# 8. Evaluate the model
+# -----------------------------------------------------------
+print("\n✅ Model Evaluation Results:")
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred))
+
+# -----------------------------------------------------------
+# 9. Test the model on new unseen data
+# -----------------------------------------------------------
+new_texts = [
+    "Government announces new election reforms",
+    "The movie broke all box office records",
+    "The football team secured the championship",
+    "New AI system improves smartphone features"
+]
+
+new_vec = vectorizer.transform(new_texts)
+predictions = model.predict(new_vec)
+
+print("\n🔮 Predictions on New Data:")
+for text, label in zip(new_texts, predictions):
+    print(f"'{text}' --> {label}")
+
+
+###(3.) Implement the NB optimal classifier. Data set is given to you in class.
+
+# Step 1: Import libraries
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+# Step 2: Create a sample dataset
+data = {
+    'Study_Hours': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    'Attendance': [40, 50, 60, 65, 70, 80, 85, 90, 95, 98],
+    'Result': ['Fail', 'Fail', 'Fail', 'Fail', 'Pass', 'Pass', 'Pass', 'Pass', 'Pass', 'Pass']
+}
+
+df = pd.DataFrame(data)
+print("Sample Dataset:\n", df)
+
+# Step 3: Convert categorical labels to numeric
+df['Result'] = df['Result'].map({'Fail': 0, 'Pass': 1})
+
+# Step 4: Split into features (X) and labels (y)
+X = df[['Study_Hours', 'Attendance']]
+y = df['Result']
+
+# Step 5: Split into train and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Step 6: Create and train the Naive Bayes model
+model = GaussianNB()
+model.fit(X_train, y_train)
+
+# Step 7: Make predictions
+y_pred = model.predict(X_test)
+
+# Step 8: Evaluate the model
+print("\n✅ Model Accuracy:", accuracy_score(y_test, y_pred))
+print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred))
+
+
+###Assignment_7
+
+##(1.) Implement Random Forest algorithm on MNIST data.
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from tensorflow.keras.datasets import mnist
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+from sklearn.model_selection import StratifiedShuffleSplit, GridSearchCV
+import joblib    # for model saving (optional)
+import time
+
+# --------------------
+# User-configurable settings
+# --------------------
+USE_SUBSAMPLE = True      # set False to train on full MNIST (longer)
+TRAIN_SUBSAMPLE = 12000   # number of training samples if subsampling
+TEST_SUBSAMPLE = 3000     # number of test samples if subsampling
+
+N_ESTIMATORS = 100        # number of trees
+MAX_FEATURES = 'sqrt'     # 'sqrt' is common for classification
+MIN_SAMPLES_LEAF = 1
+N_JOBS = -1               # -1 uses all processors
+RANDOM_STATE = 42
+
+# --------------------
+# 1) Load MNIST
+# --------------------
+(X_train_full, y_train_full), (X_test_full, y_test_full) = mnist.load_data()
+print("loaded shapes:", X_train_full.shape, y_train_full.shape, X_test_full.shape, y_test_full.shape)
+
+# Combine (makes subsampling easier)
+X_all = np.vstack([X_train_full, X_test_full])
+y_all = np.hstack([y_train_full, y_test_full])
+n_total = X_all.shape[0]
+print("combined dataset shape:", X_all.shape)
+
+# --------------------
+# 2) Preprocess - flatten and scale pixels to [0,1]
+# --------------------
+X_all_flat = X_all.reshape((n_total, -1)).astype(np.float32) / 255.0  # shape (70000, 784)
+print("flattened to:", X_all_flat.shape)
+
+# --------------------
+# 3) Subsample (optional) - stratified to keep class balance
+# --------------------
+if USE_SUBSAMPLE:
+    from sklearn.model_selection import StratifiedShuffleSplit
+    sss = StratifiedShuffleSplit(n_splits=1, train_size=TRAIN_SUBSAMPLE, test_size=TEST_SUBSAMPLE, random_state=RANDOM_STATE)
+    train_idx, test_idx = next(sss.split(X_all_flat, y_all))
+    X_train = X_all_flat[train_idx]
+    y_train = y_all[train_idx]
+    X_test  = X_all_flat[test_idx]
+    y_test  = y_all[test_idx]
+else:
+    # use the original train/test partition
+    X_train = X_all_flat[:60000]
+    y_train = y_all[:60000]
+    X_test  = X_all_flat[60000:]
+    y_test  = y_all[60000:]
+
+print("Train shape:", X_train.shape, " Test shape:", X_test.shape)
+
+# --------------------
+# 4) Train Random Forest
+# --------------------
+rf = RandomForestClassifier(
+    n_estimators=N_ESTIMATORS,
+    max_features=MAX_FEATURES,
+    min_samples_leaf=MIN_SAMPLES_LEAF,
+    n_jobs=N_JOBS,
+    random_state=RANDOM_STATE,
+    oob_score=True   # useful only if using bootstrap (default True)
+)
+
+start = time.time()
+print("Training RandomForest with", N_ESTIMATORS, "trees...")
+rf.fit(X_train, y_train)
+elapsed = time.time() - start
+print(f"Training finished in {elapsed:.1f} sec")
+
+# --------------------
+# 5) Predict & Evaluate
+# --------------------
+y_pred = rf.predict(X_test)
+train_acc = accuracy_score(y_train, rf.predict(X_train))
+test_acc = accuracy_score(y_test, y_pred)
+print(f"Train accuracy: {train_acc:.4f}")
+print(f"Test accuracy : {test_acc:.4f}")
+
+print("\nClassification report (test):")
+print(classification_report(y_test, y_pred, zero_division=0))
+
+cm = confusion_matrix(y_test, y_pred)
+print("Confusion matrix (test):\n", cm)
+
+# --------------------
+# 6) Out-of-bag score (if available)
+# --------------------
+if hasattr(rf, "oob_score_"):
+    try:
+        print("OOB score (if available):", rf.oob_score_)
+    except Exception:
+        pass
+
+# --------------------
+# 7) Feature importance (visualize as 28x28 heatmap)
+# --------------------
+import matplotlib
+import matplotlib.pyplot as plt
+
+feat_imp = rf.feature_importances_  # length 784
+heatmap = feat_imp.reshape(28, 28)
+plt.figure(figsize=(5,5))
+plt.imshow(heatmap, cmap='hot')
+plt.title('Feature importance heatmap (pixels)')
+plt.colorbar()
+plt.show()
+
+# --------------------
+# 8) Save model and predictions (optional)
+# --------------------
+out_preds = pd.DataFrame({"true": y_test, "pred": y_pred})
+out_preds.to_csv("mnist_rf_predictions.csv", index=False)
+joblib.dump(rf, "mnist_random_forest.joblib")
+print("Saved predictions -> mnist_rf_predictions.csv and model -> mnist_random_forest.joblib")
+
+
+##(2.) Implement Random Forest algorithm on Mental health data (.csv provided in the lecture)
+
+# -------------------------------
+# Random Forest on Mental Health Dataset
+# -------------------------------
+
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Step 1: Load Dataset
+url = "https://raw.githubusercontent.com/plotly/datasets/master/mental-health-in-tech-2016.csv"
+data = pd.read_csv('mental_health.csv')
+print("✅ Data loaded successfully!")
+print(data.head())
+
+# Step 2: Preprocessing
+data = data.dropna(subset=["treatment"])   # Drop rows with no target value
+data = data.fillna("Unknown")              # Fill missing values for features
+
+# Encode categorical columns
+le = LabelEncoder()
+for col in data.select_dtypes(include="object").columns:
+    data[col] = le.fit_transform(data[col])
+
+# Step 3: Define Features (X) and Target (y)
+X = data.drop("treatment", axis=1)
+y = data["treatment"]
+
+# Step 4: Train/Test Split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+print("\nTraining Samples:", X_train.shape[0])
+print("Testing Samples:", X_test.shape[0])
+
+# Step 5: Build Random Forest Model
+rf_model = RandomForestClassifier(
+    n_estimators=100, 
+    max_depth=None, 
+    random_state=42, 
+    n_jobs=-1,
+    oob_score=True
+)
+rf_model.fit(X_train, y_train)
+
+print("\n✅ Random Forest model trained successfully!")
+
+# Step 6: Predictions
+y_pred = rf_model.predict(X_test)
+
+# Step 7: Evaluation
+print("\n🎯 Model Performance:")
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred))
+
+# Step 8: Feature Importance
+importances = rf_model.feature_importances_
+indices = np.argsort(importances)[::-1]
+
+plt.figure(figsize=(10, 5))
+sns.barplot(x=importances[indices][:10], y=X.columns[indices][:10])
+plt.title("Top 10 Feature Importances - Random Forest")
+plt.show()
+
+# Step 9: Out-of-Bag Score
+print("\nOOB Score:", rf_model.oob_score_)
+
+
+##(3.) Implement Random Forest algorithm on customers' default payments data set. Given a 
+##set of features, predict the probability of a customer defaulting on a loan. The target 
+##variable is "default payment" (Yes=1; No=1)
+
+import pandas as pd
+
+# Path to your CSV file
+file_path = r"C:\Users\USER\Desktop\jupyter\UCI_Credit_Card.csv"
+
+# Load CSV (skip first row which has metadata)
+data = pd.read_csv(file_path, header=1)
+
+print("✅ CSV file loaded successfully!")
+print("Shape of data:", data.shape)
+print("\nFirst 5 rows:")
+print(data.head())
+
+# Drop the 'ID' column (not needed for prediction)
+data = data.drop(columns=['ID'])
+print("✅ Dropped ID column.")
+
+# Check for missing or invalid values
+print("\nMissing values in each column:")
+print(data.isnull().sum())
+
+# Explore unique values in EDUCATION and MARRIAGE
+print("\nUnique values in EDUCATION column:", data['EDUCATION'].unique())
+print("Unique values in MARRIAGE column:", data['MARRIAGE'].unique())
+
+# According to dataset info, valid values:
+# EDUCATION should be [1, 2, 3, 4] → we will replace others (0, 5, 6) with 4 (unknown)
+# MARRIAGE should be [1, 2, 3] → replace 0 with 3 (others)
+data['EDUCATION'] = data['EDUCATION'].replace([0, 5, 6], 4)
+data['MARRIAGE'] = data['MARRIAGE'].replace(0, 3)
+
+print("\nAfter cleaning:")
+print("Unique EDUCATION:", data['EDUCATION'].unique())
+print("Unique MARRIAGE:", data['MARRIAGE'].unique())
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+plt.figure(figsize=(5,4))
+sns.countplot(x='default payment next month', data=data)
+plt.title("Target Variable Distribution (Default = 1, No Default = 0)")
+plt.show()
+
+X = data.drop(['default payment next month'], axis=1)
+y = data['default payment next month']
+
+from sklearn.utils import resample
+
+# Separate majority and minority classes
+defaulted = data[data['default payment next month'] == 1]
+not_defaulted = data[data['default payment next month'] == 0]
+
+# Downsample both to 1000 samples
+defaulted_downsampled = resample(defaulted, replace=False, n_samples=1000, random_state=42)
+not_defaulted_downsampled = resample(not_defaulted, replace=False, n_samples=1000, random_state=42)
+
+# Combine both
+data_downsampled = pd.concat([defaulted_downsampled, not_defaulted_downsampled])
+
+# Shuffle the dataset
+data_downsampled = data_downsampled.sample(frac=1, random_state=42).reset_index(drop=True)
+
+print("Downsampled dataset shape:", data_downsampled.shape)
+print("Class distribution:\n", data_downsampled['default payment next month'].value_counts())
+
+# Separate features and target
+X = data_downsampled.drop(['default payment next month'], axis=1).copy()
+y = data_downsampled['default payment next month']
+
+# One-hot encode categorical features automatically
+X_encoded = pd.get_dummies(X, drop_first=True)
+
+print("Encoded feature shape:", X_encoded.shape)
+print("\nEncoded columns preview:\n", X_encoded.columns[:10])
+
+from sklearn.model_selection import train_test_split
+
+# Split into 80% training and 20% testing
+X_train, X_test, y_train, y_test = train_test_split(
+    X_encoded, y, test_size=0.2, random_state=42, stratify=y
+)
+
+print("Training set shape:", X_train.shape)
+print("Testing set shape:", X_test.shape)
+
+from sklearn.ensemble import RandomForestClassifier
+
+# Initialize the Random Forest model
+rf_model = RandomForestClassifier(
+    n_estimators=100,      # number of trees
+    random_state=42,       # for reproducibility
+    max_depth=None,        # let it grow fully
+    n_jobs=-1              # use all CPU cores
+)
+
+# Train the model
+rf_model.fit(X_train, y_train)
+
+print("✅ Random Forest model trained successfully!")
+
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Predict on the test set
+y_pred = rf_model.predict(X_test)
+
+# Calculate accuracy
+accuracy = accuracy_score(y_test, y_pred)
+print("✅ Model Accuracy:", round(accuracy * 100, 2), "%\n")
+
+# Confusion Matrix
+cm = confusion_matrix(y_test, y_pred)
+print("Confusion Matrix:\n", cm, "\n")
+
+# Classification Report
+print("Classification Report:\n", classification_report(y_test, y_pred))
+
+# Visualize confusion matrix
+plt.figure(figsize=(5,4))
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', cbar=False)
+plt.title("Confusion Matrix - Random Forest")
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.show()
+
+
+###Assignment_8
+
+##(1.) Predict Sugar of Diabetic Patient given BMI and Age using k-NN, assume k = 3
+BMI Age Sugar
+33.6 50 1
+26.6 30 O
+23.4 40 O
+43.1 67 O
+35.3 23 1
+35.9 67 1
+36.7 45 1
+25.7 46 O
+23.3 29 O
+31 56 1
+
+# Assignment 8: K-Nearest Neighbor (KNN)
+# ---------------------------------------
+# Problem: Predict Sugar of Diabetic Patient given BMI and Age using KNN (k=3)
+
+# Import necessary libraries
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+# Step 1: Create the dataset
+data = {
+    'BMI': [33.6, 26.6, 23.4, 43.1, 35.3, 35.9, 36.7, 25.7, 23.3, 31.0],
+    'Age': [50, 30, 40, 67, 23, 67, 45, 46, 29, 56],
+    'Sugar': [1, 0, 0, 0, 1, 1, 1, 0, 0, 1]
+}
+
+df = pd.DataFrame(data)
+print("Dataset:\n")
+print(df)
+
+# Step 2: Split the data into features (X) and labels (y)
+X = df[['BMI', 'Age']]
+y = df['Sugar']
+
+# Step 3: Split dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+print("\nTraining Data:\n", X_train)
+print("\nTesting Data:\n", X_test)
+
+# Step 4: Normalize the data (important for distance-based algorithms)
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Step 5: Choose the value of k
+k = 3
+
+# Step 6: Train the KNN model
+knn = KNeighborsClassifier(n_neighbors=k)
+knn.fit(X_train_scaled, y_train)
+
+# Step 7: Predict on test data
+y_pred = knn.predict(X_test_scaled)
+
+# Step 8: Evaluate performance
+print("\nPredictions:", y_pred)
+print("\nActual Values:", y_test.values)
+
+accuracy = accuracy_score(y_test, y_pred)
+print("\nAccuracy:", round(accuracy * 100, 2), "%")
+
+print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred))
+
+# Step 9: Predict Sugar for a new patient (Example)
+new_patient = np.array([[34.5, 55]])  # BMI=34.5, Age=55
+new_patient_scaled = scaler.transform(new_patient)
+prediction = knn.predict(new_patient_scaled)
+
+print("\nPrediction for new patient (BMI=34.5, Age=55):", "Diabetic" if prediction[0] == 1 else "Non-Diabetic")
+
+
+##(2.) Consider the following data set
+Brightness Saturation Class
+40 20 Red
+50 50 Blue
+60 90 Blue
+10 25 Red
+70 70 Blue
+60 10 Red
+25 80 Blue
+Design a k-NN to assign a class label for the following.
+Brightness Saturation Class
+20 35 ?
+
+# --------------------------------------------
+# Assignment: k-Nearest Neighbor (KNN)
+# Problem: Predict the color class (Red/Blue)
+# Given Brightness and Saturation values.
+# --------------------------------------------
+
+# Step 1: Import required libraries
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+import matplotlib.pyplot as plt
+
+# Step 2: Create dataset
+data = {
+    'Brightness': [40, 50, 60, 10, 70, 60, 25],
+    'Saturation': [20, 50, 90, 25, 70, 10, 80],
+    'Class': ['Red', 'Blue', 'Blue', 'Red', 'Blue', 'Red', 'Blue']
+}
+
+df = pd.DataFrame(data)
+print("Dataset:\n")
+print(df)
+
+# Step 3: Encode class labels (Red=0, Blue=1)
+le = LabelEncoder()
+df['Class_encoded'] = le.fit_transform(df['Class'])
+
+# Step 4: Split features (X) and target (y)
+X = df[['Brightness', 'Saturation']]
+y = df['Class_encoded']
+
+# Step 5: Normalize features
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Step 6: Define and train KNN model
+k = 3
+knn = KNeighborsClassifier(n_neighbors=k)
+knn.fit(X_scaled, y)
+
+# Step 7: Predict for the new data point (Brightness=20, Saturation=35)
+new_point = np.array([[20, 35]])
+new_point_scaled = scaler.transform(new_point)
+predicted_class = knn.predict(new_point_scaled)
+
+# Step 8: Show prediction
+predicted_label = le.inverse_transform(predicted_class)
+print(f"\nPredicted Class for Brightness=20, Saturation=35: {predicted_label[0]}")
+
+# Step 9 (Optional): Visualization
+plt.figure(figsize=(7,5))
+for i, label in enumerate(df['Class'].unique()):
+    subset = df[df['Class'] == label]
+    plt.scatter(subset['Brightness'], subset['Saturation'], label=label, s=100)
+
+# Plot new point
+plt.scatter(20, 35, color='green', marker='*', s=200, label='New Point (?)')
+
+plt.title('KNN Classification of Colors')
+plt.xlabel('Brightness')
+plt.ylabel('Saturation')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+
+##(3.) Apply k-NN on the iris data set.
+
+# --------------------------------------------
+# Assignment 8: k-Nearest Neighbor (KNN)
+# Question 3: Apply KNN on the Iris Dataset
+# --------------------------------------------
+
+# Step 1: Import required libraries
+import numpy as np
+import pandas as pd
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Step 2: Load the Iris dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Convert to a DataFrame for better visualization
+df = pd.DataFrame(X, columns=iris.feature_names)
+df['species'] = iris.target_names[y]
+
+print("🔹 First 5 rows of Iris dataset:")
+print(df.head())
+
+# Step 3: Split data into train and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Step 4: Standardize (normalize) the data
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Step 5: Create and train the KNN model
+k = 3  # You can change k to tune performance
+knn = KNeighborsClassifier(n_neighbors=k)
+knn.fit(X_train_scaled, y_train)
+
+# Step 6: Make predictions
+y_pred = knn.predict(X_test_scaled)
+
+# Step 7: Evaluate performance
+print("\n✅ Model Evaluation:")
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred, target_names=iris.target_names))
+
+# Step 8: Visualization - Confusion Matrix
+plt.figure(figsize=(6,4))
+sns.heatmap(confusion_matrix(y_test, y_pred), annot=True, fmt='d',
+            cmap='Blues', xticklabels=iris.target_names, yticklabels=iris.target_names)
+plt.xlabel('Predicted Label')
+plt.ylabel('True Label')
+plt.title('KNN Confusion Matrix (k=3)')
+plt.show()
+
+# Step 9: Check model performance for different k values
+accuracy_scores = []
+k_values = range(1, 11)
+
+for k in k_values:
+    knn = KNeighborsClassifier(n_neighbors=k)
+    knn.fit(X_train_scaled, y_train)
+    y_pred_k = knn.predict(X_test_scaled)
+    accuracy_scores.append(accuracy_score(y_test, y_pred_k))
+
+# Plot accuracy vs k
+plt.figure(figsize=(7,4))
+plt.plot(k_values, accuracy_scores, marker='o')
+plt.title('Accuracy vs K value')
+plt.xlabel('Number of Neighbors (k)')
+plt.ylabel('Accuracy')
+plt.grid(True)
+plt.show()
